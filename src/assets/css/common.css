@@ -1,0 +1,149 @@
+﻿body
+{
+    color:#555;
+    background:url('/resource/images/bodybj.png') repeat-x;
+    }
+.center-box
+{
+    margin:0px auto;
+    width:1260px;
+    overflow:hidden;
+    }
+.left
+{
+    float:left;
+    }
+.right
+{
+    float:right;
+    }
+.tc{
+    text-align: center;
+}
+.mt20{
+    margin-top: 20px;
+}
+.mt30{
+    margin-top: 30px;
+}
+.section-right
+{
+    width:370px;
+    margin-right:20px;
+    }
+.section-left
+{
+    width:870px;
+    margin-right:20px;
+    }
+.clear-margin-right
+{
+    margin-right:0px;
+    }
+.f24{
+    font-size: 24px;
+}
+.f28{
+    font-size: 28px;
+}
+a, .blue
+{
+    color:#2a85e8;
+    }
+a:hover
+{
+    color:#11639d;
+    }
+.transition
+{
+	transition: all 0.2s ease;
+	-webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    }
+article h3
+{
+    padding-top:10px;
+    font-size: 24px;
+    font-weight:bold;
+    }
+article h3 a
+{
+	transition: all 0.2s ease;
+	-webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    }
+        
+/* Page */
+#pages {
+    text-decoration:none;
+    font-size: 12px;
+    padding: 20px 0;
+    text-align: center;
+    width: 670px;
+}
+#pages a {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #E3E3E3;
+    color: #666666;
+    display: inline-block;
+    height: 22px;
+    line-height: 22px;
+    padding: 0 10px;
+    text-align: center;
+    margin-left:5px;
+    text-decoration:none;
+    border-radius: 3px;
+}
+#pages a.a1 {
+    background:url("/resource/images/pages.png") no-repeat scroll 0 5px transparent;
+    padding:0 10px;
+    border-radius: 3px;
+    }
+#pages a:hover {
+    background: none repeat scroll 0 0 #068EE6;
+    color: #FFFFFF;
+    text-decoration: none;
+    border-radius: 3px;
+}
+#pages span {
+    background: none repeat scroll 0 0 #068EE6;
+    border: 1px solid #5A85B2;
+    color: #FFFFFF;
+    display: inline-block;
+    height: 22px;
+    line-height: 22px;
+    padding: 0 10px;
+    text-align: center;
+    margin-left:5px;
+    border-radius: 3px;
+}
+    
+/* Page Footer */
+#lion-footer
+{
+    margin-top:20px;
+    height:80px;
+    line-height:78px;
+    color:#fff;
+    background:#3b70e1 url("/resource/images/footerbj.png") repeat-x;
+    text-shadow:0 1px 0 #333;
+    min-width: 1260px;
+    }
+
+ /* 回到顶部 */
+ #returnTop {
+ 	display:none;
+	position:fixed;
+	z-index:99;
+	bottom:100px;
+	width:50px;
+	height:50px;
+	left:50%;
+	margin-left:580px;
+	background:url(/resource/images/bigtop.png) no-repeat;
+}
+#returnTop:hover {
+	background-position:-50px 0;
+}
