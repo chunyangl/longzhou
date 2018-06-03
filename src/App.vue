@@ -1,7 +1,7 @@
 <template>
   <div id="admin-app">
     <el-header style="height: 77px; display: flex;">
-      <img class="header-logo" src="./assets/image/logo.jpeg" alt="北京龙科方舟生物工程技术有限公司" /><p class="title">{{title}}</p>
+      <a href="/" target="_blank"><img class="header-logo" src="./assets/image/logo.jpeg" alt="北京龙科方舟生物工程技术有限公司" /><p class="title">{{title}}</p></a>
     </el-header>
     <el-container style=" border: 1px solid #eee; background: #fff; min-height: 600px;">
       <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
@@ -16,21 +16,20 @@
         <el-submenu index="2">
           <template slot="title"><i class="el-icon-menu"></i>标签管理</template>
           <el-menu-item-group>
-            <el-menu-item index="2-1">添加标签</el-menu-item>
-            <el-menu-item index="2-2">标签管理</el-menu-item>
+            <el-menu-item index="2-1" @click="nav('tagManage')">标签管理</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
         <el-submenu index="3">
           <template slot="title"><i class="el-icon-setting"></i>用户管理</template>
           <el-menu-item-group>
-            <el-menu-item index="3-1">添加用户</el-menu-item>
-            <el-menu-item index="3-2">用户管理</el-menu-item>
+            <el-menu-item index="3-1" @click="nav('adminmanagement')">用户管理</el-menu-item>
+            <el-menu-item index="3-2" @click="nav('addadmin')">添加用户</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
         </el-menu>
       </el-aside>
 
-      <el-main style="min-height: 600px;">
+      <el-main style="min-height: 600px;  min-width: 1000px;">
         <router-view></router-view>
       </el-main>
     </el-container>
@@ -41,10 +40,16 @@
 export default {
   data () {
     return {
-      title: ''
+      title: '北京龙科方舟生物工程技术有限公司',
+      username: ''
     }
   },
+  created () {
+    console.log(this.getCookie('username'));
+    this.username = this.getCookie('username');
+  },
   methods: {
+    getCookie: function(e){for(var t=document.cookie.split(";"),n="",r="",i=!1,a=0;a<t.length;a++){if(n=t[a].split("="),n[0].replace(/^\s+|\s+$/g,"")==e)return i=!0,n.length>1&&(r=unescape(n[1].replace(/^\s+|\s+$/g,""))),r;n=null,""}if(!i)return null},
     nav: function(navStr) {
         this.$router.push(navStr)
     }
@@ -52,17 +57,22 @@ export default {
 }
 </script>
 <style>
+.el-menu{
+  height: 100%;
+}
 .el-menu-item-group__title{
   padding: 0;
 }
 .header-logo{
-  margin-top: 6px;
-  width: 60px;
-  height: 60px;
+  margin-top: 16px;
+  width: 40px;
+  height: 40px;
+  float: left;
 }
 .title{
-  font-size: 30px;
-  margin: 20px;
+  font-size: 26px;
+  margin: 24px 0 0 10px;
   color: #3f66c8;
+  float: left;
 }
 </style>

@@ -1,7 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import add from '@/components/add'
-import management from "@/components/management";
+import addadmin from '@/components/addadmin'
+import management from "@/components/management"
+import tagmanage from "@/components/tagManage"
+import adminmanagement from "@/components/adminmanagement"
 
 Vue.use(Router)
 
@@ -18,6 +21,18 @@ export default new Router({
     {
       path: '/add',
       component: add
+    },
+    {
+      path: '/tagmanage',
+      component: tagmanage
+    },
+    {
+      path: '/adminmanagement',
+      component: adminmanagement
+    },
+    {
+      path: '/addadmin',
+      component: addadmin
     }
   ]
 })

@@ -7,7 +7,8 @@ import elementUi from 'element-ui'
 import './assets/js/jquery-min.js'
 import './assets/css/reset.css'
 import './assets/css/common.css'
-import 'element-ui/lib/theme-chalk/index.css';
+import 'element-ui/lib/theme-chalk/index.css'
+
 Vue.config.productionTip = false
 Vue.use(elementUi)
 
