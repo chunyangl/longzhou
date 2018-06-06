@@ -3,8 +3,9 @@
     <el-form ref="form" :model="form" label-width="80px">
       <el-form-item label="浏览权限">
         <el-radio-group v-model="form.role">
-          <el-radio label=",1,2," >管理员可见</el-radio>
-          <el-radio label=",1,2,3," >所有人可见</el-radio>
+          <el-radio label=",1,2," >管理员</el-radio>
+          <el-radio label=",1,2,3," >管理员及普通员工</el-radio>
+          <el-radio label="," >所有人</el-radio>
         </el-radio-group>
       </el-form-item>
       <el-form-item label="数据类型" v-show="!form.id">
