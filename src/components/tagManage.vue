@@ -5,7 +5,7 @@
       <el-button type="primary" icon="el-icon-edit" @click="addtag" id='search-btn'> 添加标签&nbsp; &nbsp; </el-button>
     </div>
     <div >
-      <el-button class="mb15" plain  icon="el-icon-delete" v-for="item in tags" :key="item.id" @click="Delete(item.id)">{{item.name}}</el-button>
+      <el-button class="mb15" plain  :icon="(Role==1||Role==2)?'el-icon-delete':''" v-for="item in tags" :key="item.id" @click="(Role==1||Role==2)?Delete(item.id):''">{{item.name}}</el-button>
     </div>
   </div>
 </template>
@@ -19,6 +19,7 @@ export default {
     }
   },
   created (){
+    this.Role = ~~localStorage.getItem('r');
     this.getAllTags();
   },
   methods: {
@@ -52,7 +53,9 @@ export default {
         if(res.data){
           _this.getAllTags();
           _this.tagName = '';
+          return;
         }
+        location.href="/admin/"
       });
     },
     Delete(id){
@@ -64,6 +67,10 @@ export default {
       }).then(() => {
         this.ajax('/api/tags/DeleteTagByID/'+id, 'Get', '', function (res) {
           _this.getAllTags()
+          if(res.action == 'redirect') {
+            location.href="/admin/"
+            return;
+          }
           _this.$message({
             type: 'success',
             message: "删除成功",

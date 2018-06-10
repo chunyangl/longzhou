@@ -9,7 +9,7 @@
         <el-option v-for="item in tags" :key="item.id" :label="item.name" :value="item.id">
         </el-option>
       </el-select>
-      <el-input placeholder="请输入搜索内容" v-model="inputText" class="ipt-w" clearable></el-input>
+      <el-input placeholder="请输入搜索内容" v-model="inputText" class="ipt-w" clearable @keyup.enter.native="search(1)"></el-input>
       <el-button type="primary" icon="el-icon-search" @click="search(1)" id='search-btn'> 搜索&nbsp; &nbsp; </el-button>
   </div>
     <el-table :data="data" stripe style="width: 100%">
@@ -23,8 +23,8 @@
       <el-table-column prop="createtime" label="创建时间" width="150"></el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
-          <el-button size="mini" @click="Edit(scope.$index, scope.row)">修改</el-button>
-          <el-button size="mini" type="danger" @click="Delete(scope.$index, scope.row)">删除</el-button>
+          <el-button v-show="(Role==1||Role==2)||scope.row.createname == u" size="mini" @click="Edit(scope.$index, scope.row)">修改</el-button>
+          <el-button v-show="(Role==1||Role==2)||scope.row.createname == u" size="mini" type="danger" @click="Delete(scope.$index, scope.row)">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -59,10 +59,14 @@ export default {
       pageIndex: 1,
       pageSize: 20,
       total: 0,
-      data: []
+      data: [],
+      Role: 0,
+      u: 0
     }
   },
   created (){
+    this.Role = ~~localStorage.getItem('r');
+    this.u = ~~localStorage.getItem('u');
     this.getAllTags();
     this.search();
   },
@@ -106,6 +110,14 @@ export default {
           type: 'warning'
         }).then(() => {
           this.ajax('/api/article/DeleteArticleByID/'+row.id, 'Get', '', function (res) {
+            if(res.action === 'redirect') {
+              _this.$message({
+                type: 'success',
+                message: "您没有删除权限或登录超时请登录后重试！",
+                duration: 3000
+              });
+              return;
+            }
             _this.search()
             _this.$message({
               type: 'success',

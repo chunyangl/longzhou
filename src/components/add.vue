@@ -225,6 +225,7 @@ export default {
           }, 1000);
           return;
         }
+        if(res.action === 'redirect') location.href="/admin/";
         _this.errorMsg();
       });
     },
