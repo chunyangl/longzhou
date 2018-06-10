@@ -73,6 +73,7 @@ export default {
       if(!this.usession) { location.href="/admin/"; return;}
       var _this = this;
       this.ajax('/api/admin/unLogin', 'Post', {}, function (res) {
+        _this.setCookie('usession',"",-1);
         location.href="/";
       });
     },
