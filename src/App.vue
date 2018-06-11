@@ -74,7 +74,10 @@ export default {
       var _this = this;
       this.ajax('/api/admin/unLogin', 'Post', {}, function (res) {
         _this.setCookie('usession',"",-1);
-        location.href="/";
+        localStorage.setItem('unlogin', 'true');
+        setTimeout(() => {
+          location.href="/";
+        }, 500);
       });
     },
     setCookie: function(e,t,n,r,i,a){var o=new Date;n&&(n=1e3*n*60*60*24);var s=new Date(o.getTime()+n);document.cookie=e+"="+escape(t)+(n?";expires="+s.toGMTString():"")+(r?";path="+r:"")+(i?";domain="+i:"")+(a?";secure":"")},
