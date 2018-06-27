@@ -38,7 +38,7 @@
         <el-input v-model="form.source" style="width:200px;" :span="11"></el-input>
       </el-form-item>
       <el-form-item v-show="label.features[form.classid]" :label="label.features[form.classid]">
-        <el-input v-model="form.features" style="width:600px;" :span="11"></el-input>
+        <el-input type="textarea" v-model="form.features"></el-input>
       </el-form-item>
       
       <el-form-item v-show="label.resistance[form.classid]" label="抗性">
@@ -51,7 +51,7 @@
         <el-input v-model="form.copysequence" style="width:200px;" :span="11"></el-input>
       </el-form-item>
       <el-form-item v-show="label.method[form.classid]" label="构建方法">
-        <el-input v-model="form.method" style="width:600px;" :span="11"></el-input>
+        <el-input v-model="form.method" type="textarea"></el-input>
       </el-form-item>
       <el-form-item v-show="label.picpath[form.classid]" :label="label.picpath[form.classid]">
         <el-upload style="width: 600px;" :limit="1" :action="'/api/article/UploadImg'" :on-success="handleSuccess" :on-remove="handleRemove" list-type="picture" ref="pic">
@@ -62,10 +62,10 @@
       <el-form-item v-show="label.sequence[form.classid]" :label="label.sequence[form.classid]">
         <el-input type="textarea" v-model="form.sequence"></el-input>
       </el-form-item>
-      <el-form-item v-show="label.filepath[form.classid]" :label="label.filepath[form.classid]">
+      <el-form-item label="附件">
         <el-upload style="width: 600px;" :limit="1" :action="'/api/article/UploadFile'" :on-success="fileSuccess" :on-remove="fileRemove" ref='file'>
           <el-button size="small" type="primary">点击上传</el-button>
-          <div slot="tip" class="el-upload__tip">可上传.rar .zip .docx .xlsx .txt .pptx .pdf .jpg .jpeg .gif .png .bmp文件，不超过5MB</div>
+          <div slot="tip" class="el-upload__tip">不超过100MB</div>
         </el-upload>
       </el-form-item>
       
@@ -90,7 +90,6 @@ export default {
         method: {'1':'构建方法'},
         picpath: {'1':'图谱', '2':'显微照片'},
         sequence: {'1':'序列', '2':'序列'},
-        filepath: {'3':'附件'},
         source: {'2':'来源'},
         features: {'2':'菌株特性'}
       },
