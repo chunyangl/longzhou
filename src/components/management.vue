@@ -13,14 +13,15 @@
       <el-button type="primary" icon="el-icon-search" @click="search(1)" id='search-btn'> 搜索&nbsp; &nbsp; </el-button>
   </div>
     <el-table :data="data" stripe style="width: 100%">
-      <el-table-column prop="className" label="类型" width="100"></el-table-column>
+      <el-table-column prop="className" label="类型" width="60"></el-table-column>
       <el-table-column label="课题名称" width="400">
         <template slot-scope="scope">
           <a target="_blank" :href="'/details.html?aid='+scope.row.id">{{scope.row.project}}</a>
         </template>
       </el-table-column>
-      <el-table-column prop="username" label="创建者" width="150"></el-table-column>
-      <el-table-column prop="createtime" label="创建时间" width="150"></el-table-column>
+      <el-table-column prop="name" label="名称" width="200"></el-table-column>
+      <el-table-column prop="username" label="创建者" width="80"></el-table-column>
+      <el-table-column prop="createtime" label="创建时间" width="100"></el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
           <el-button v-show="(Role==1||Role==2)||scope.row.createname == u" size="mini" @click="Edit(scope.$index, scope.row)">修改</el-button>
