@@ -14,14 +14,18 @@
   </div>
     <el-table :data="data" stripe style="width: 100%">
       <el-table-column prop="className" label="类型" width="60"></el-table-column>
-      <el-table-column label="课题名称" width="400">
+      <el-table-column label="课题名称" width="300">
         <template slot-scope="scope">
           <a target="_blank" :href="'/details.html?aid='+scope.row.id">{{scope.row.project}}</a>
         </template>
       </el-table-column>
-      <el-table-column prop="name" label="名称" width="200"></el-table-column>
+      <el-table-column label="名称" width="300">
+        <template slot-scope="scope">
+          <a target="_blank" :href="'/details.html?aid='+scope.row.id">{{scope.row.name}}</a>
+        </template>
+      </el-table-column>
       <el-table-column prop="username" label="创建者" width="80"></el-table-column>
-      <el-table-column prop="createtime" label="创建时间" width="100"></el-table-column>
+      <el-table-column prop="createtime" label="创建时间" width="120"></el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
           <el-button v-show="(Role==1||Role==2)||scope.row.createname == u" size="mini" @click="Edit(scope.$index, scope.row)">修改</el-button>
@@ -85,7 +89,8 @@ export default {
         TagID: this.tagid || 0,
         PageIndex: this.pageIndex,
         PageSize: this.pageSize,
-        Project: this.inputText || ''
+				Project: this.inputText || '',
+				manager: true
       }, function (res) {
         if(res.data.ItemCount === 0){
           _this.$message({message:'未搜索到数据！',duration: 1000, type: 'warning'});

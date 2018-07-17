@@ -1,8 +1,15 @@
 <template>
   <div class="add-main">
     <el-form ref="form" :model="form" label-width="80px">
+      <el-form-item label="修改权限">
+        <el-radio-group v-model="form.manager">
+          <el-radio label=",1," >超级管理员及创建者</el-radio>
+          <el-radio label=",1,2," >管理员及创建者</el-radio>
+        </el-radio-group>
+      </el-form-item>
       <el-form-item label="浏览权限">
         <el-radio-group v-model="form.role">
+          <el-radio label=",1," >超级管理员</el-radio>
           <el-radio label=",1,2," >管理员</el-radio>
           <el-radio label=",1,2,3," >管理员及普通员工</el-radio>
           <el-radio label="," >所有人</el-radio>
@@ -40,7 +47,7 @@
       <el-form-item v-show="label.features[form.classid]" :label="label.features[form.classid]">
         <el-input type="textarea" v-model="form.features"></el-input>
       </el-form-item>
-      
+
       <el-form-item v-show="label.resistance[form.classid]" label="抗性">
         <el-input v-model="form.resistance" style="width:200px;" :span="11"></el-input>
       </el-form-item>
@@ -68,7 +75,7 @@
           <div slot="tip" class="el-upload__tip">不超过100MB</div>
         </el-upload>
       </el-form-item>
-      
+
       <el-form-item>
         <el-button type="primary" @click="onSubmit">保 存</el-button>
       </el-form-item>
@@ -108,7 +115,8 @@ export default {
         filepath: '',
         source: '',
         features: '',
-        role: ',1,2,',
+				manager: ',1,',
+        role: ',1,',
         tagList: []
       },
       tags: []
@@ -132,7 +140,8 @@ export default {
           filepath: '',
           source: '',
           features: '',
-          role: ',1,2,',
+					manager: ',1,',
+          role: ',1,',
           tagList: []
         }
       }
@@ -196,7 +205,7 @@ export default {
               tagList.push(item*1);
             });
           }
-          
+
           form.tagList = tagList;
           _this.form = form;
         }
