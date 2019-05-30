@@ -1,7 +1,7 @@
 <template>
   <div id="admin-app">
     <el-header style="height: 77px; display: flex; justify-content: space-between;">
-      <a href="/" target="_blank"><img class="header-logo" src="./assets/image/logo.jpeg" alt="北京龙科方舟生物工程技术有限公司" /><p class="title">{{title}}</p></a><a @click="unlogin" id='unlogin'>退出登录</a>
+      <a href="/" target="_blank"><img class="header-logo" src="./assets/image/logo.jpeg" alt="北京龙科方舟生物工程技术有限公司" /><p class="title">{{title}}</p></a><a @click="unlogin" id='unlogin'>{{name}}，退出登录</a>
     </el-header>
     <el-container style=" border: 1px solid #eee; background: #fff; min-height: 600px;">
       <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
@@ -42,7 +42,8 @@ export default {
     return {
       title: '北京龙科方舟生物工程技术有限公司',
       usession: '',
-      Role: 0
+			Role: 0,
+			name: window.localStorage.getItem('name')
     }
   },
   created () {
